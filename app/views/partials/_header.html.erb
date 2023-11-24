@@ -1,0 +1,9 @@
+<h1> Hola Chq.To </h1>
+<% unless Current.user %>
+    <%= link_to login_path do %>
+        <button> Iniciar sesión </button>
+    <% end %>
+<% else %>
+    <%= Current.user.username %>
+<% end %>
+<%= link_to 'Crear usuario', new_user_path %>
