@@ -4,4 +4,5 @@ class User < ApplicationRecord
     validates :username, :password, length: { in: 4..25, message: "lenght is 4-25" }
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "Invalid email"}
     validates :username, :email, uniqueness: { message: "Already in use" }
+    has_secure_password
 end

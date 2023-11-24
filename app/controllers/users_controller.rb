@@ -1,15 +1,17 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ destroy ]
+  skip_before_action :protect_pages, only: [:new, :create]
 
   # GET /users/new
   def new
     @user = User.new
   end
 
-  # POST /users
+  # POST /users 
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to '/', notice: "Usuario creado"
     else
       render :new, status: :unprocessable_entity
