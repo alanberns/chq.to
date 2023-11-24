@@ -5,5 +5,8 @@
     <% end %>
 <% else %>
     <%= Current.user.username %>
+    <%= link_to logout_path do %>
+        <button> Cerrar sesión </button>
+    <% end %>
 <% end %>
 <%= link_to 'Crear usuario', new_user_path %>

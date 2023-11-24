@@ -16,6 +16,12 @@ class SessionsController < ApplicationController
         end 
     end
 
+    def destroy 
+        session[:user_id] = nil
+        Current.user = nil
+        redirect_to '/', notice: "Sesión cerrada"
+    end
+
     private
     # Only allow a list of trusted parameters through.
     def user_params
