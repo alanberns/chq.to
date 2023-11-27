@@ -48,6 +48,12 @@ include LinksHelper
     redirect_to links_url, notice: "Link was successfully destroyed."
   end
 
+  # GET /l/:slug
+  def slug
+    @link = Link.find_by(slug: params[:slug])
+    redirect_to @link.url, allow_other_host: true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
