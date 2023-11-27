@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+include LinksHelper
   before_action :set_link, only: %i[ show edit update destroy ]
 
   # GET /links 
@@ -23,7 +24,7 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
     @link.user_id = Current.user.id
-    @link.slug = "bbbbb"
+    @link.slug = create_slug
     if @link.save
       redirect_to links_url, notice: "Link was successfully created."
     else
