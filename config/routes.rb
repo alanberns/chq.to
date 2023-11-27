@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :links
   resources :users, only: [:new, :create, :destroy]
 
   get "login" => "sessions#new", as: "login"
@@ -8,5 +9,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   
-  # root "posts#index"
+  root to: "links#index"
 end

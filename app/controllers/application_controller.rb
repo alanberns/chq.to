@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
     end
 
     def protect_pages
-        redirect_to new_session_path, alert: 'No estás logueado' unless Current.user
+        redirect_to login_path, alert: 'No estás logueado' unless Current.user
     end
 end

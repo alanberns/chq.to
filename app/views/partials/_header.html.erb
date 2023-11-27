@@ -1,4 +1,6 @@
-<h1> Hola Chq.To </h1>
+<%= link_to root_path do %>
+    <h1> Chq.To </h1>
+<% end %>
 <% unless Current.user %>
     <%= link_to login_path do %>
         <button> Iniciar sesión </button>
@@ -9,4 +11,3 @@
         <button> Cerrar sesión </button>
     <% end %>
 <% end %>
-<%= link_to 'Crear usuario', new_user_path %>

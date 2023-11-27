@@ -15,9 +15,12 @@
       </div>
 
       <div class="form-group">
-        <%= form.submit class: 'form-control btn-primary' %>
+        <%= submit_tag 'Iniciar sesión', class: 'form-control btn-primary' %>
       </div>
     <% end %>
+  </div>
+  <div> No tenés una cuenta?
+    <%= link_to 'Crear usuario', new_user_path %>
   </div>
 </div>
 
