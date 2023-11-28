@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "logout" => "sessions#destroy", as: "logout"
 
   get "l/:slug" => "links#slug" 
+  post "l/:slug" => "links#post_slug", as: "slugPass"
 
   get "up" => "rails/health#show", as: :rails_health_check
 

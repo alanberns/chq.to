@@ -1,0 +1,12 @@
+<%= form_with(url: slugPass_path(@link.slug)) do |form| %>
+
+    <div>
+        <%= form.label :password, style: "display: block" %>
+        <%= form.text_field :password %>
+    </div>
+
+    <div>
+        <%= submit_tag 'Ingresar'  %>
+    </div>
+<% end %>
+  

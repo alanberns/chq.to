@@ -9,6 +9,7 @@ include LinksHelper
 
   # GET /links/1 
   def show
+    @complete_slug = generate_link(@link.slug)
   end
 
   # GET /links/new
@@ -51,7 +52,38 @@ include LinksHelper
   # GET /l/:slug
   def slug
     @link = Link.find_by(slug: params[:slug])
-    redirect_to @link.url, allow_other_host: true
+    unless @link
+      raise ActionController::RoutingError.new('Not Found')
+    else
+      case @link.link_type
+      when 'regular'
+        redirect_to @link.url, allow_other_host: true
+      when 'privado'
+        render :post_slug, @link=> @link
+      when 'temporal'
+        redirect_to @link.url, allow_other_host: true if @link.expires_at > DateTime.now
+        raise ActionController::RoutingError.new('Not Found')
+      when 'efimero'
+        if @link.remaining_accesses > 0
+          @link.remaining_accesses = @link.remaining_accesses.pred 
+          @link.save
+          redirect_to @link.url, allow_other_host: true 
+        else
+          raise ActionController::RoutingError.new('Forbidden')
+        end
+      end
+    end
+  end
+
+  # POST /l/:slug
+  def post_slug
+    @link = Link.find_by(slug: params[:slug])
+    if @link&.authenticate(params[:password])
+      redirect_to @link.url, allow_other_host: true 
+    else 
+      flash['alert']='Contraseña incorrecta'
+      render :post_slug, @link=> @link, status: :unprocessable_entity
+    end
   end
 
   private

@@ -10,4 +10,8 @@ module LinksHelper
         end
         res
     end
+
+    def generate_link(slug)
+        'http://127.0.0.1:3000/l/'.concat(slug)
+    end
 end
