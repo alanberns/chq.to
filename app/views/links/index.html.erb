@@ -8,6 +8,7 @@
         <%= link_to "Show this link", link %>
       </p>
     <% end %>
+    <%= paginate @links %>
   <% else %>
     <span> No tenés links creados </span>
   <% end %>
