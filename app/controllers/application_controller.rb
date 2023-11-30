@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
 
     def protect_unauthorized(link_user_id)
         # Raise unauthorized
-        redirect_to '/', alert: 'Unauthorized' unless Current.user.id == link_user_id
+        redirect_to '/403' unless Current.user.id == link_user_id
     end
 end

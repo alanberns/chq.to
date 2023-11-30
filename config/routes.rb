@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   get "l/:slug" => "links#slug" 
   post "l/:slug" => "links#post_slug", as: "slugPass"
 
+  get '/404', to: 'errors#not_found'
+  get '/403', to: 'errors#forbidden'
+  get '/500', to: 'errors#internal_server_error'
+
+  match '*unmatched', to: 'errors#not_found', via: :all
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   

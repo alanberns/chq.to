@@ -58,7 +58,7 @@ include LinksHelper
   def slug
     @link = Link.find_by(slug: params[:slug])
     unless @link
-      raise ActionController::RoutingError.new('Not Found')
+      redirect_to '/404'
     else
       case @link.link_type
       when 'regular'
@@ -69,7 +69,7 @@ include LinksHelper
         if @link.expires_at > DateTime.now
           redirect 
         else
-          raise ActionController::RoutingError.new('Not Found')
+          redirect_to '/404'
         end
       when 'efimero'
         if @link.remaining_accesses > 0
@@ -77,8 +77,8 @@ include LinksHelper
           @link.remaining_accesses = @link.remaining_accesses - 1
           @link.save
           redirect 
-        else
-          raise ActionController::RoutingError.new('Forbidden')
+        else      
+          redirect_to '/403'
         end
       end
     end
@@ -98,7 +98,11 @@ include LinksHelper
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
-      @link = Link.find(params[:id])
+      begin
+        @link = Link.find(params[:id])
+      rescue
+        redirect_to '/404'
+      end
     end
 
     def redirect
