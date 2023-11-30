@@ -9,6 +9,7 @@ include LinksHelper
 
   # GET /links/1 
   def show
+    protect_unauthorized(@link.user_id)
     @complete_slug = generate_link(@link.slug)
   end
 
@@ -19,6 +20,7 @@ include LinksHelper
 
   # GET /links/1/edit
   def edit
+    protect_unauthorized(@link.user_id)
   end
 
   # POST /links
@@ -26,6 +28,7 @@ include LinksHelper
     @link = Link.new(link_params)
     @link.user_id = Current.user.id
     @link.slug = create_slug
+    @link.remaining_accesses = 1 if @link.link_type == 'efimero'
     if @link.save
       redirect_to links_url, notice: "Link was successfully created."
     else
@@ -35,6 +38,7 @@ include LinksHelper
 
   # PATCH/PUT /links/1
   def update
+    protect_unauthorized(@link.user_id)
     if @link.update(link_params)
       redirect_to links_url, notice: "Link was successfully updated."
     else
@@ -44,6 +48,7 @@ include LinksHelper
 
   # DELETE /links/1
   def destroy
+    protect_unauthorized(@link.user_id)
     @link.destroy!
 
     redirect_to links_url, notice: "Link was successfully destroyed."
@@ -61,11 +66,15 @@ include LinksHelper
       when 'privado'
         render :post_slug, @link=> @link
       when 'temporal'
-        redirect if @link.expires_at > DateTime.now
-        raise ActionController::RoutingError.new('Not Found')
+        if @link.expires_at > DateTime.now
+          redirect 
+        else
+          raise ActionController::RoutingError.new('Not Found')
+        end
       when 'efimero'
         if @link.remaining_accesses > 0
-          @link.remaining_accesses = @link.remaining_accesses.pred 
+          @link.password='asdfg'
+          @link.remaining_accesses = @link.remaining_accesses - 1
           @link.save
           redirect 
         else

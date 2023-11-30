@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
     def protect_pages
         redirect_to login_path, alert: 'No estás logueado' unless Current.user
     end
+
+    def protect_unauthorized(link_user_id)
+        # Raise unauthorized
+        redirect_to '/', alert: 'Unauthorized' unless Current.user.id == link_user_id
+    end
 end
