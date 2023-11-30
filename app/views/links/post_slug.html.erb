@@ -1,4 +1,4 @@
-<%= form_with(url: slugPass_path(@link.slug)) do |form| %>
+<%= form_with(url: slugPass_path(@link.slug), data: { turbo: false }) do |form| %>
 
     <div>
         <%= form.label :password, style: "display: block" %>

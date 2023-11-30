@@ -57,17 +57,17 @@ include LinksHelper
     else
       case @link.link_type
       when 'regular'
-        redirect_to @link.url, allow_other_host: true
+        redirect
       when 'privado'
         render :post_slug, @link=> @link
       when 'temporal'
-        redirect_to @link.url, allow_other_host: true if @link.expires_at > DateTime.now
+        redirect if @link.expires_at > DateTime.now
         raise ActionController::RoutingError.new('Not Found')
       when 'efimero'
         if @link.remaining_accesses > 0
           @link.remaining_accesses = @link.remaining_accesses.pred 
           @link.save
-          redirect_to @link.url, allow_other_host: true 
+          redirect 
         else
           raise ActionController::RoutingError.new('Forbidden')
         end
@@ -79,7 +79,7 @@ include LinksHelper
   def post_slug
     @link = Link.find_by(slug: params[:slug])
     if @link&.authenticate(params[:password])
-      redirect_to @link.url, allow_other_host: true 
+      redirect
     else 
       flash['alert']='Contraseña incorrecta'
       render :post_slug, @link=> @link, status: :unprocessable_entity
@@ -90,6 +90,11 @@ include LinksHelper
     # Use callbacks to share common setup or constraints between actions.
     def set_link
       @link = Link.find(params[:id])
+    end
+
+    def redirect
+      # ESTADISTICAS
+      redirect_to @link.url, allow_other_host: true, status: :found
     end
 
     # Only allow a list of trusted parameters through.
