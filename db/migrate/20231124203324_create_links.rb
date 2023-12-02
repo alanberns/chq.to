@@ -8,7 +8,7 @@ class CreateLinks < ActiveRecord::Migration[7.1]
       t.datetime :expires_at
       t.string :password_digest
       t.integer :remaining_accesses
-      t.string :link_type, null: false
+      t.string :type
 
       t.timestamps
     end

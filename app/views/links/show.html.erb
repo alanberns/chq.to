@@ -1,8 +1,42 @@
-<%= render @link %>
+<p>
+<strong>Short url:</strong>
+<%= @complete_slug %>
+</p>
+
+<p>
+<strong>Url destino:</strong>
+<%= @link.url %>
+</p>
+
+<p>
+<strong>Name:</strong>
+<%= @link.name %>
+</p>
+
+<% if @link.type == "Temporal" %>
+  <p>
+  <strong>Expires at:</strong>
+  <%= @link.expires_at %>
+  </p>
+<% end %>
+
+<% if @link.type == "Private" %>
+  <p>
+  <strong>Password:</strong>
+  <%= @link.password %>
+  </p>
+<% end %>
+
+<% if @link.type == "Ephemeral" %>
+  <p>
+  <strong>Remaining accesses:</strong>
+  <%= @link.remaining_accesses %>
+  </p>
+<% end %>
 
 <div>
   <%= link_to "Edit this link", edit_link_path(@link) %> |
   <%= link_to "Back to links", links_path %>
 
-  <%= button_to "Destroy this link", @link, method: :delete %>
+  <%= button_to "Destroy this link",'/links/'+@link.id.to_s, method: :delete %>
 </div>

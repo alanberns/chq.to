@@ -1,7 +1,7 @@
-<%= form_with(model: link) do |form| %>
-  <% if link.errors.any? %>
+<%= form_with(model: link, url: '/links') do |form| %>
+  <% if @link.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(link.errors.count, "error") %> prohibited this link from being saved:</h2>
+      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
 
       <ul>
         <% link.errors.each do |error| %>
@@ -21,37 +21,28 @@
     <%= form.text_field :name %>
   </div>
 
-  <div data: { controller: "link" }>
-    <%= form.label :link_type, style: "display: block" %>
-    <%= form.select :link_type, [], {}, autocomplete: "off",
-     data: { action: "change =>link#enable" } do %>
-     <% [
-      ['Regular','Regular'],
-      ['Temporal','Temporal'],
-      ['Efímero','Efímero'],
-      ['Privado','Privado']
-        ].to_h.keys.each do |value| %>
-      <%= tag.option value, value: value,
-            aria: { controls: form.field_id(:link_type, value, :fieldset) } %>
-      <% end %>
-    <% end %>
-  </div>
+  <% if link.type == "Temporal" %>
+    <div>
+      <%= form.label :expires_at, style: "display: block" %>
+      <%= form.datetime_field :expires_at %>
+    </div>
+  <% end %>
 
+  <% if link.type == "Private" %>
+    <div>
+      <%= form.label :password, style: "display: block" %>
+      <%= form.text_field :password %>
+    </div>
+  <% end %>
 
-  <div>
-    <%= form.label :expires_at, style: "display: block" %>
-    <%= form.datetime_field :expires_at %>
-  </div>
+  <% if link.type == "Ephemeral" %>
+    <div>
+      <%= form.label :remaining_accesses, style: "display: block" %>
+      <%= form.number_field :remaining_accesses, :disabled => true , :value => 1%>
+    </div>
+  <% end %>
 
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.text_field :password %>
-  </div>
-
-  <div>
-    <%= form.label :remaining_accesses, style: "display: block" %>
-    <%= form.number_field :remaining_accesses, :disabled => true , :value => 1%>
-  </div>
+  <%= form.text_field :type, :value => link.type, :hidden => true %>
 
   <div>
     <%= form.submit %>

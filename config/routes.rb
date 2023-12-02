@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'links/type' => "links#type"
   resources :links
   resources :users, only: [:new, :create, :destroy]
 

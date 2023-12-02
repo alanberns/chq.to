@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_203324) do
     t.datetime "expires_at"
     t.string "password_digest"
     t.integer "remaining_accesses"
-    t.string "link_type", null: false
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_links_on_slug", unique: true

@@ -16,6 +16,7 @@ include LinksHelper
   # GET /links/new
   def new
     @link = Link.new
+    @link.type = params[:type]
   end
 
   # GET /links/1/edit
@@ -28,7 +29,7 @@ include LinksHelper
     @link = Link.new(link_params)
     @link.user_id = Current.user.id
     @link.slug = create_slug
-    @link.remaining_accesses = 1 if @link.link_type == 'efimero'
+    @link.remaining_accesses = 1 if @link.type == 'Ephemeral'
     if @link.save
       redirect_to links_url, notice: "Link was successfully created."
     else
@@ -60,21 +61,20 @@ include LinksHelper
     unless @link
       redirect_to '/404'
     else
-      case @link.link_type
-      when 'regular'
+      case @link.type
+      when 'Regular'
         redirect
-      when 'privado'
+      when 'Private'
         render :post_slug, @link=> @link
-      when 'temporal'
+      when 'Temporal'
         if @link.expires_at > DateTime.now
           redirect 
         else
           redirect_to '/404'
         end
-      when 'efimero'
+      when 'Ephemeral'
         if @link.remaining_accesses > 0
-          @link.password='asdfg'
-          @link.remaining_accesses = @link.remaining_accesses - 1
+          @link.decrement!(:remaining_accesses)
           @link.save
           redirect 
         else      
@@ -95,6 +95,9 @@ include LinksHelper
     end
   end
 
+  def type
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
@@ -112,6 +115,6 @@ include LinksHelper
 
     # Only allow a list of trusted parameters through.
     def link_params
-      params.require(:link).permit(:url, :name, :expires_at, :password, :remaining_accesses, :link_type)
+      params.require(:link).permit(:url, :name, :expires_at, :password, :remaining_accesses, :link_type, :type)
     end
 end
