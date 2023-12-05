@@ -1,42 +1,54 @@
-<p>
-<strong>Short url:</strong>
-<%= @complete_slug %>
-</p>
+<div class="card text-center">
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <p>
+          <strong>Short url:</strong>
+          <%= @complete_slug %>
+        </p>  
+      </li>
+      <li class="list-group-item">
+        <p>
+          <strong>Url destino:</strong>
+          <%= @link.url %>
+        </p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <strong>Name:</strong>
+          <%= @link.name %>
+        </p>
+      </li>
+      <% if @link.type == "Temporal" %>
+        <li class="list-group-item">
+          <p>
+            <strong>Expires at:</strong>
+            <%= @link.expires_at %>
+          </p>
+        </li>
+      <% end %>
+      <% if @link.type == "Private" %>
+        <li class="list-group-item">
+          <p>
+            <strong>Password:</strong>
+            <%= @link.password %>
+          </p>
+        </li>
+      <% end %>
+      <% if @link.type == "Ephemeral" %>
+        <li class="list-group-item">
+          <p>
+            <strong>Remaining accesses:</strong>
+            <%= @link.remaining_accesses %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="card-body">
+    <%= link_to "Edit this link", edit_link_path(@link) %> |
+    <%= link_to "Back to links", links_path %>
 
-<p>
-<strong>Url destino:</strong>
-<%= @link.url %>
-</p>
-
-<p>
-<strong>Name:</strong>
-<%= @link.name %>
-</p>
-
-<% if @link.type == "Temporal" %>
-  <p>
-  <strong>Expires at:</strong>
-  <%= @link.expires_at %>
-  </p>
-<% end %>
-
-<% if @link.type == "Private" %>
-  <p>
-  <strong>Password:</strong>
-  <%= @link.password %>
-  </p>
-<% end %>
-
-<% if @link.type == "Ephemeral" %>
-  <p>
-  <strong>Remaining accesses:</strong>
-  <%= @link.remaining_accesses %>
-  </p>
-<% end %>
-
-<div>
-  <%= link_to "Edit this link", edit_link_path(@link) %> |
-  <%= link_to "Back to links", links_path %>
-
-  <%= button_to "Destroy this link",'/links/'+@link.id.to_s, method: :delete %>
+    <%= button_to "Destroy this link",'/links/'+@link.id.to_s, method: :delete %>
+  </div>
 </div>

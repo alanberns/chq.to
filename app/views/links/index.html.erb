@@ -2,24 +2,26 @@
 
 <div id="links">
   <% if @links.present? %>
-    <table class="">
-      <tr>
-        <th>Link destino</th>
-        <th>Nombre</th>
-        <th>Acciones</th>
-      </tr>
-      <% @links.each do |link| %>
+    <table class="table table-hover"">
+      <thead>
         <tr>
-          <td><%=link.url%></td>
-          <td><%=link.name%></td>
-          <td><%= link_to "Show this link", link_path(link.id) %></td>
+          <th>Link destino</th>
+          <th>Nombre</th>
+          <th>Acciones</th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% @links.each do |link| %>
+          <tr>
+            <td><%=link.url%></td>
+            <td><%=link.name%></td>
+            <td><%= link_to "Show this link", link_path(link.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
     <%= paginate @links %>
   <% else %>
     <span> No tenés links creados </span>
   <% end %>
 </div>
-
-<%= link_to "New link", links_type_path %>
