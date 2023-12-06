@@ -1,4 +1,42 @@
-<%= link_to "Ephemeral", new_link_path(:type=>'Ephemeral') %>
-<%= link_to "Private", new_link_path(:type=>'Private') %>
-<%= link_to "Regular", new_link_path(:type=>'Regular') %>
-<%= link_to "Temporal", new_link_path(:type=>'Temporal') %>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">
+            <%= link_to "Temporal", new_link_path(:type=>'Temporal') %>
+        </h5>
+        <p class="card-text">Regular con una fecha de caducidad</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">
+            <%= link_to "Regular", new_link_path(:type=>'Regular') %>
+        </h5>
+        <p class="card-text">Acceso público</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">
+            <%= link_to "Private", new_link_path(:type=>'Private') %>
+        </h5>
+        <p class="card-text">Acceso con contraseña</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">
+            <%= link_to "Ephemeral", new_link_path(:type=>'Ephemeral') %>
+        </h5>
+        <p class="card-text">Regular con un número limitado de accesos</p>
+      </div>
+    </div>
+  </div>
+</div>
