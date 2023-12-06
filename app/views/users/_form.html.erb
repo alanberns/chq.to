@@ -1,8 +1,10 @@
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
+    <div class="alert alert-danger" role="alert">
+      <div >
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      </div>
+      <hr>
       <ul>
         <% user.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,19 +13,47 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_field :username %>
+
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <%= form.label :username, :class=>"col-form-label" %>
+    </div>
+    <div class="col-auto">
+      <%= form.text_field :username, :class=>"form-control", 'aria-describedby'=>"username" %>
+    </div>
+    <div class="col-auto">
+      <span id="username" class="form-text">
+        Must be a 4-25 characters long and only letters
+      </span>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <%= form.label :email, :class=>"col-form-label" %>
+    </div>
+    <div class="col-auto">
+    <%= form.email_field :email, :class=>"form-control", 'aria-describedby'=>"email"  %>
+    </div>
+    <div class="col-auto">
+      <span id="email" class="form-text">
+        Must be a valid email: name@mail.com
+      </span>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password %>
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <%= form.label :password, :class=>"col-form-label" %>
+    </div>
+    <div class="col-auto">
+    <%= form.password_field :password, :class=>"form-control", 'aria-describedby'=>"password"  %>
+    </div>
+    <div class="col-auto">
+      <span id="password" class="form-text">
+        Must be a 4-25 characters long and only letters
+      </span>
+    </div>
   </div>
 
   <div>
