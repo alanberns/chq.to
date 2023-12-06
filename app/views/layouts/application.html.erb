@@ -10,11 +10,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body style="min-height: 100vh;display: flex;
-  flex-direction: column;">
+  <body class="text-center" style="min-height: 90vh; background-color:#D2E8EA">
     <%= render 'partials/header' %>
-    <%= render 'partials/flash' %>
-    <%= yield %>
-    <%= render 'partials/footer' %>
+    <div class="container">
+      <%= render 'partials/flash' %>
+      <%= yield %>
+    </div>
+      <br>
+      <%= render 'partials/footer' %>
   </body>
 </html>

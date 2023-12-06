@@ -1,6 +1,10 @@
-<%= form_with(url: slugPass_path(@link.slug), data: { turbo: false }) do |form| %>
+<div>
+  <h1> Ingresa la contraseña para acceder al recurso </h1>
+</div>
+<div>
+  <%= form_with(url: slugPass_path(@link.slug), data: { turbo: false }) do |form| %>
 
-    <div class="row g-3 align-items-center">
+    <div class="row align-items-center">
         <div class="col-auto">
         <%= form.label :password, :class=>"col-form-label" %>
         </div>
@@ -12,5 +16,7 @@
     <div>
         <%= submit_tag 'Ingresar'  %>
     </div>
-<% end %>
+  <% end %>
+</div>
+
   

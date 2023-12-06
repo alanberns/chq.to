@@ -1,4 +1,23 @@
-<h1>500</h1>
-<h2>Internal Server Error</h2>
-<p>Oops! We're sorry, but something went wrong on our end. Please try again later.</p>
-<%= render 'link_to_home' %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChqTo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="text-center" style="min-height: 90vh; background-color:#8BAEB8">
+    <div class="card" style="background-color:#8BAEB8"">
+        <div class="card-body">
+            <h5 class="card-title">500</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">Internal Server Error</h6>
+            <p class="card-text">Oops! We're sorry, but something went wrong on our end. Please try again later.</p>
+            <%= render 'link_to_home' %>
+        </div>
+    </div>
+  </body>
+</html>
