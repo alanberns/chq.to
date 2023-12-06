@@ -4,7 +4,8 @@
 
 <br>
 
-<div>
-  <%= link_to "Show this link", link_path(@link.id) %> |
-  <%= link_to "Back to links", links_path %>
+<div class="d-grid gap-2 d-md-block d-md-flex justify-content-md-center p-2">
+  <%= button_to "Show this link", link_path(@link.id), method: :get , :class=>"btn btn-light"%>
+  
+  <%= button_to "Back to links", links_path, method: :get , :class=>"btn btn-light"%>
 </div>

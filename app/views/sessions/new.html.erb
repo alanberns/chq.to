@@ -1,4 +1,4 @@
-<h4 class="">Inicia sesión</h4>
+<h1 class="">Inicia sesión</h1>
 <%= form_with(url: login_path) do |form| %>
 
   <div class="row g-3 align-items-center">
@@ -19,7 +19,7 @@
     </div>
   </div>
   <div>
-    <%= form.submit "Iniciar sesión" %>
+    <%= form.submit "Iniciar sesión", :class=>"btn btn-light" %>
   </div>
 <% end %>
 <div> No tenés una cuenta?

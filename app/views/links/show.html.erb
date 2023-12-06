@@ -48,10 +48,12 @@
       <% end %>
     </ul>
   </div>
-  <div class="card-body">
-    <%= link_to "Edit this link", edit_link_path(@link) %> |
-    <%= link_to "Back to links", links_path %>
-
-    <%= button_to "Destroy this link",'/links/'+@link.id.to_s, method: :delete %>
-  </div>
+</div>
+    
+<div class="d-grid gap-2 d-md-block d-md-flex justify-content-md-center p-2">
+  <%= button_to "Edit this link", edit_link_path(@link), method: :get , :class=>"btn btn-light"%>
+  
+  <%= button_to "Back to links", links_path, method: :get , :class=>"btn btn-light"%>
+  
+  <%= button_to "Destroy this link",'/links/'+@link.id.to_s, method: :delete, :class=>"btn btn-light"%>
 </div>
