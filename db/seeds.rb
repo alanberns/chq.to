@@ -1,13 +1,26 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+
 
 #statistics
 #date:datetime
 #ip_address:string
+
+Link.delete_all
+User.delete_all
+puts("Elementos borrados")
+
+user1 = User.create(email:"testuno@mail.com", username:"testuno", password:"asdfg")
+user2 = User.create(email:"testdos@mail.com", username:"testdos", password:"asdfg")
+user3 = User.create(email:"testvacio@mail.com", username:"testvacio", password:"asdfg")
+
+linkunoreg = Link.create(name:"LinkUnoReg", slug:"aaaaaaaa", url:"https://www.facebook.com/", type:"Regular", user_id:user1.id)
+linkunopriv = Link.create(name:"LinkUnoPriv", slug:"bbbbbbb", url:"https://www.facebook.com/", type:"Private", user_id:user1.id, password:"asdfg")
+linkunotemp = Link.create(name:"LinkUnoTemp", slug:"cccccccc", url:"https://www.facebook.com/", type:"Temporal", user_id:user1.id, expires_at: DateTime.now+10)
+linkunoephem = Link.create(name:"LinkUnoEphem", slug:"eeeeeeee", url:"https://www.facebook.com/", type:"Ephemeral", user_id:user1.id, remaining_accesses: 2)
+linkunoephemInact = Link.create(name:"LinkUnoEphemInactivo", slug:"ffffffff", url:"https://www.facebook.com/", type:"Ephemeral", user_id:user1.id, remaining_accesses: 0)
+
+linkdosreg = Link.create(name:"LinkDosReg", slug:"gggggggg", url:"https://www.facebook.com/", type:"Regular", user_id:user2.id)
+linkdospriv = Link.create(name:"LinkDosPriv", slug:"hhhhhhhh", url:"https://www.facebook.com/", type:"Private", user_id:user2.id, password:"asdfg")
+linkdostemp = Link.create(name:"LinkDosTemp", slug:"iiiiiiii", url:"https://www.facebook.com/", type:"Temporal", user_id:user2.id, expires_at: DateTime.now+10)
+linkdosephem = Link.create(name:"LinkDosEphem", slug:"kkkkkkkk", url:"https://www.facebook.com/", type:"Ephemeral", user_id:user2.id, remaining_accesses: 2)
+linkdosephemInact = Link.create(name:"LinkDosEphemInactivo", slug:"llllllll", url:"https://www.facebook.com/", type:"Ephemeral", user_id:user2.id, remaining_accesses: 0)
+puts("Elementos creados")
