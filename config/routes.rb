@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "l/:slug" => "links#slug" 
   post "l/:slug" => "links#post_slug", as: "slugPass"
 
+  get "links/:id/statistics/detail" => "statistics#show_detail", as: "show_detail_stats"
+
   get '/404', to: 'errors#not_found'
   get '/403', to: 'errors#forbidden'
   get '/500', to: 'errors#internal_server_error'

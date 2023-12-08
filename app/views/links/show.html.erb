@@ -54,6 +54,17 @@
   <%= button_to "Edit this link", edit_link_path(@link), method: :get , :class=>"btn btn-light"%>
   
   <%= button_to "Back to links", links_path, method: :get , :class=>"btn btn-light"%>
+
+  <div class="dropdown">
+    <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Show statistics
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to "Accesses detail",show_detail_stats_path, :class=>"dropdown-item"%></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+    </ul>
+  </div>
   
   <%= button_to "Destroy this link",'/links/'+@link.id.to_s, method: :delete, :class=>"btn btn-light"%>
 </div>

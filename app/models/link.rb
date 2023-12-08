@@ -1,4 +1,5 @@
 class Link < ApplicationRecord
+    has_many :statistics
     belongs_to :user
     validates :user, presence: true
     validates :slug, :url, :type, presence: true

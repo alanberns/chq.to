@@ -1,9 +1,4 @@
-
-
-#statistics
-#date:datetime
-#ip_address:string
-
+Statistic.delete_all
 Link.delete_all
 User.delete_all
 puts("Elementos borrados")
@@ -23,4 +18,10 @@ linkdospriv = Link.create(name:"LinkDosPriv", slug:"hhhhhhhh", url:"https://www.
 linkdostemp = Link.create(name:"LinkDosTemp", slug:"iiiiiiii", url:"https://www.facebook.com/", type:"Temporal", user_id:user2.id, expires_at: DateTime.now+10)
 linkdosephem = Link.create(name:"LinkDosEphem", slug:"kkkkkkkk", url:"https://www.facebook.com/", type:"Ephemeral", user_id:user2.id, remaining_accesses: 2)
 linkdosephemInact = Link.create(name:"LinkDosEphemInactivo", slug:"llllllll", url:"https://www.facebook.com/", type:"Ephemeral", user_id:user2.id, remaining_accesses: 0)
+
+Statistic.create(link_id: linkunoreg.id, date: DateTime.now, ip_address: "127.0.0.1")
+Statistic.create(link_id: linkunoreg.id, date: DateTime.now, ip_address: "127.0.0.1")
+Statistic.create(link_id: linkunoreg.id, date: DateTime.now, ip_address: "127.0.0.1")
+Statistic.create(link_id: linkunoreg.id, date: DateTime.now, ip_address: "127.0.0.1")
+Statistic.create(link_id: linkunoreg.id, date: DateTime.now, ip_address: "127.0.0.1")
 puts("Elementos creados")
