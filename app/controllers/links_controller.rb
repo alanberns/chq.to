@@ -109,7 +109,7 @@ include LinksHelper
     end
 
     def redirect
-      # statistic = Statistic.create(ip_address:request.remote_ip, date: DateTime.now, link_id:@link.id)
+      Statistic.create(ip_address:request.remote_ip, date: DateTime.now, link_id:@link.id)
       redirect_to @link.url, allow_other_host: true, status: :found
     end
 
