@@ -27,7 +27,7 @@
                   <ul class="dropdown-menu">
                     <li><%= link_to "Accesses detail",show_detail_stats_path(link.id), :class=>"dropdown-item"%></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><%= link_to "Accesses per day",show_day_stats_path(link.id), :class=>"dropdown-item"%></li>
                   </ul>
                 </div>
               </div>

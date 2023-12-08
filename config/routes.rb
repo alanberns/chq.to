@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post "l/:slug" => "links#post_slug", as: "slugPass"
 
   get "links/:id/statistics/detail" => "statistics#show_detail", as: "show_detail_stats"
+  get "links/:id/statistics/day" => "statistics#show_day", as: "show_day_stats"
 
   get '/404', to: 'errors#not_found'
   get '/403', to: 'errors#forbidden'

@@ -1,0 +1,29 @@
+<div>
+  <h1> Link <%= @link_name%> accesses by day </h1>
+</div>
+<div id="statistics">
+  <% if @statistics.present? %>
+    <table class="table table-hover"">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Number of access</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @statistics.each do |stats| %>
+          <tr>
+            <td><%=stats[0].to_date%></td>
+            <td><%=stats[1]%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <span> El link aún no tiene accesos </span>
+  <% end %>
+</div>
+    
+<div class="d-grid gap-2 d-md-block d-md-flex justify-content-md-center p-2">  
+  <%= button_to "Back to links", links_path, method: :get , :class=>"btn btn-light"%>
+</div>
