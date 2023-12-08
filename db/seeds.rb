@@ -26,4 +26,6 @@ Statistic.create(link_id: linkunoreg.id, date: DateTime.now, ip_address: "127.0.
 Statistic.create(link_id: linkunoreg.id, date: DateTime.now, ip_address: "127.0.0.1")
 Statistic.create(link_id: linkunoreg.id, date: DateTime.now-10, ip_address: "127.0.0.2")
 Statistic.create(link_id: linkunoreg.id, date: DateTime.now-10, ip_address: "127.0.0.2")
+Statistic.create(link_id: linkunoreg.id, date: DateTime.now-5, ip_address: "227.0.0.2")
+Statistic.create(link_id: linkunoreg.id, date: DateTime.now-5, ip_address: "227.0.0.2")
 puts("Elementos creados")

@@ -3,6 +3,26 @@
 </div>
 <div id="statistics">
   <% if @statistics.present? %>
+    <div class="d-grid gap-2 d-md-block d-md-flex justify-content-md-center p-4">
+      <form class="d-flex row gy-2 gx-3 align-items-center" role="search" method:"get", action= <%= "/links/#{@statistics[0].link_id}/statistics/detail"%>>
+        <div class="col-auto form-floating">
+          <input class="form-control me-2" type="search" name="ip_address" placeholder="IP address" aria-label="Search" id="floatingIP" value= <%= @ip_address %> >
+          <label for="floatingIP">IP address</label>
+        </div>          
+        <div class="col-auto form-floating">
+          <input class="form-control me-2" type="date" name="start_date" placeholder="" aria-label="Search" id="floatingSD" value= <%= @start_date%>>
+          <label for="floatingSD">Start date</label>
+        </div>
+        <div class="col-auto form-floating">
+          <input class="form-control me-2" type="date" name="end_date" placeholder="" aria-label="Search" id="floatingED" value= <%= @end_date%>>
+          <label for="floatingED">End date</label>
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-light" type="submit">Search</button>
+          <%= link_to "Limpiar busqueda", request.path, :class=>"btn btn-light" %>
+        </div>
+      </form>
+    </div>
     <table class="table table-hover"">
       <thead>
         <tr>
@@ -23,7 +43,7 @@
     </table>
     <%= paginate @statistics %>
   <% else %>
-    <span> El link aún no tiene accesos </span>
+    <span> No se encontaron accesos </span>
   <% end %>
 </div>
     
