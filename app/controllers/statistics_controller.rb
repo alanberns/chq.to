@@ -1,7 +1,7 @@
 class StatisticsController < ApplicationController
     def show_detail
-        #protect_unauthorized(@link.user_id)
         link = Link.find(params[:id])
+        protect_unauthorized(link.user_id)
         @link_name = link.name
         @statistics = Statistic.filter(params).page(params[:page]).per(5)
         @start_date = params[:start_date] if params[:start_date].present?
@@ -10,8 +10,8 @@ class StatisticsController < ApplicationController
     end
 
     def show_day
-        #protect_unauthorized(@link.user_id)
         link = Link.find(params[:id])
+        protect_unauthorized(link.user_id)
         @link_name = link.name
         @statistics = Statistic.where(link_id: params[:id]).group_by_day(:date).count.filter {|day,amount| amount>0}
     end
