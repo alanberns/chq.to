@@ -1,6 +1,7 @@
 class LinksController < ApplicationController
 include LinksHelper
   before_action :set_link, only: %i[ show edit update destroy ]
+  skip_before_action :protect_pages, only: %i[ slug post_slug ]
 
   # GET /links 
   def index
@@ -109,6 +110,7 @@ include LinksHelper
     end
 
     def redirect
+      # Create stat before redirect
       Statistic.create(ip_address:request.remote_ip, date: DateTime.now, link_id:@link.id)
       redirect_to @link.url, allow_other_host: true, status: :found
     end
