@@ -18,6 +18,7 @@ module ChqTo
 
     config.exceptions_app = self.routes
     config.action_dispatch.show_exceptions = true
+    config.assets.paths << Rails.root.join("app", "assets", "img")
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

@@ -3,7 +3,9 @@
 <%= render "form", user: @user %>
 
 <br>
-
-<div>
-  <%= link_to "Back to home", '/' %>
+<div class="p-1"> ¿Ya tenés una cuenta?
+  <%= link_to 'Inicia sesión', login_path %>
+</div>
+<div class="d-grid gap-2 d-md-block d-md-flex justify-content-md-center p-2 ">  
+  <%= button_to "Back to home", root_path, method: :get , :class=>"btn btn-light"%>
 </div>

@@ -1,1 +1,2 @@
-<button type="button" class="btn btn-light"><%= link_to 'Ir al inicio', root_path %> </button>
+<%= button_to "Back to home", links_path, method: :get , :class=>"btn btn-light" if Current.user%>
+<%= button_to "Back to home", root_path, method: :get , :class=>"btn btn-light" unless Current.user%>

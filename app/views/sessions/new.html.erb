@@ -1,7 +1,7 @@
 <h1 class="">Inicia sesión</h1>
 <%= form_with(url: login_path) do |form| %>
 
-  <div class="row g-3 align-items-center">
+  <div class="row g-3 justify-content-center p-2">
     <div class="col-auto">
       <%= form.label :username, :class=>"col-form-label" %>
     </div>
@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <div class="row g-3 align-items-center">
+  <div class="row g-3 justify-content-center p-2">
     <div class="col-auto">
       <%= form.label :password, :class=>"col-form-label" %>
     </div>
@@ -22,6 +22,9 @@
     <%= form.submit "Iniciar sesión", :class=>"btn btn-light" %>
   </div>
 <% end %>
-<div> No tenés una cuenta?
+<div class="p-1"> ¿No tenés una cuenta?
   <%= link_to 'Crear usuario', new_user_path %>
+</div>
+<div class="d-grid gap-2 d-md-block d-md-flex justify-content-md-center p-2">  
+  <%= button_to "Back to home", root_path, method: :get , :class=>"btn btn-light"%>
 </div>

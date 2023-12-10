@@ -13,7 +13,7 @@
     </div>
   <% end %>
 
-  <div class="row g-3 align-items-center">
+  <div class="row g-3 justify-content-center p-2">
     <div class="col-auto">
       <%= form.label :url, :class=>"col-form-label" %>
     </div>
@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div class="row g-3 align-items-center">
+  <div class="row g-3 justify-content-center p-2">
     <div class="col-auto">
       <%= form.label :name, :class=>"col-form-label" %>
     </div>
@@ -42,7 +42,7 @@
   </div>
 
   <% if link.type == "Temporal" %>
-    <div class="row g-3 align-items-center">
+    <div class="row g-3 justify-content-center p-2">
       <div class="col-auto">
         <%= form.label :expires_at, :class=>"col-form-label" %>
       </div>
@@ -58,7 +58,7 @@
   <% end %>
 
   <% if link.type == "Private" %>
-    <div class="row g-3 align-items-center">
+    <div class="row g-3 justify-content-center p-2">
       <div class="col-auto">
         <%= form.label :password, :class=>"col-form-label" %>
       </div>
@@ -74,7 +74,7 @@
   <% end %>
 
   <% if link.type == "Ephemeral" %>
-    <div class="row g-3 align-items-center">
+    <div class="row g-3 justify-content-center p-2">
       <div class="col-auto">
         <%= form.label :remaining_accesses, :class=>"col-form-label" %>
       </div>
