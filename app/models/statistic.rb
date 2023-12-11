@@ -1,6 +1,7 @@
 class Statistic < ApplicationRecord
     belongs_to :link
     validates :link, presence: true
+    validates :ip_address, format: { with: /\A((?:(?:^|\.)(?:\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4})\z/ }
 
     def self.filter(params)
         statistics = Statistic.where(link_id: params[:id])

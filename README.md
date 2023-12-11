@@ -1,24 +1,36 @@
-# README
+# chq.to
+chq.to es una aplicación web que permite acortar enlaces
+Debes registrarte, y luego podrás crear enlaces cortos, los cuales redireccionan a la URL destino.
+Los enlaces pueden editarse y eliminarse, y cuentan con estadísticas de acceso
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Requisitos técnicos
+* Ruby 3.2.2
+* Ruby on Rails 7.1.2
+* SQLite3
+* Node.js
 
-Things you may want to cover:
+### Instalación
+* git clone https://github.com/alanberns/chq.to.git
+* bundle install
+* rails db:migrate
+* rails server
 
-* Ruby version
+###### Datos de prueba
+* rails db:seed
 
-* System dependencies
+usuarios de prueba:
+* username: testuno
+* username: testdos
+* username: testvacio
 
-* Configuration
+* passwords: asdfg (para todos los usuarios y links privados)
 
-* Database creation
 
-* Database initialization
+### Gemas 
+* bcrypt: Para encriptar y validar contraseñas
 
-* How to run the test suite
+* kaminari: Para paginación
 
-* Services (job queues, cache servers, search engines, etc.)
+* bootstrap: Framework frontend
 
-* Deployment instructions
-
-* ...
+* groupdate: Para realizar busquedas de agrupación por fechas en la base de datos

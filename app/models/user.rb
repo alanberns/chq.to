@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many :links
+    has_many :links, dependent: :delete_all
     
     validates :username, :email, :password, presence: true
     validates :username, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }

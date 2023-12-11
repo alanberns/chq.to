@@ -1,5 +1,5 @@
 class Link < ApplicationRecord
-    has_many :statistics
+    has_many :statistics, dependent: :delete_all
     belongs_to :user
     validates :user, presence: true
     validates :slug, :url, :type, presence: true
