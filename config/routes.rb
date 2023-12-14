@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post "login" => "sessions#create"
   get "logout" => "sessions#destroy", as: "logout"
 
-  get "l/:slug" => "links#slug" 
+  get "l/:slug" => "links#slug", as: "public_link"
   post "l/:slug" => "links#post_slug", as: "slugPass"
 
   get "links/:id/statistics/detail" => "statistics#show_detail", as: "show_detail_stats"

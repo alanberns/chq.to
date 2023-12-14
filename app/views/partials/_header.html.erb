@@ -12,7 +12,7 @@
                     <%= link_to "New link", links_type_path, :class=>"nav-link" %>
                 </li>
                 <li class="nav-item">
-                    <%= button_to "Borrar cuenta",user_path(Current.user.id), method: :delete,  :class=>"nav-link", :onclick => "confirm('¿Estas seguro de eliminar tu cuenta?')" %>
+                    <%= button_to "Borrar cuenta",user_path(Current.user.id), method: :delete,  :class=>"nav-link", :onclick => "return confirm('¿Estas seguro de eliminar tu cuenta?')" %>
                 </li>
             </ul>
         <% end %>

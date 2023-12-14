@@ -12,6 +12,6 @@ module LinksHelper
     end
 
     def generate_link(slug)
-        'http://127.0.0.1:3000/l/'.concat(slug)
+        public_link_url(slug: slug)
     end
 end
