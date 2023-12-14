@@ -29,8 +29,6 @@ include LinksHelper
   def create
     @link = Link.new(link_params)
     @link.user_id = Current.user.id
-    @link.slug = create_slug
-    @link.remaining_accesses = 1 if @link.type == 'Ephemeral'
     if @link.save
       redirect_to links_url, notice: "Link was successfully created."
     else
