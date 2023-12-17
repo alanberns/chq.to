@@ -1,4 +1,4 @@
-<%= form_for(:link, method: 'Patch', url:"/links/#{link.id}") do |form| %>
+<%= form_for(:link, method: 'Patch', url:link_path(@link)) do |form| %>
   <% if @link.errors.any? %>
     <div class="alert alert-danger" role="alert">
       <div >

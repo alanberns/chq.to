@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   # DELETE /users/1 
   def destroy
     @user.destroy!
-    redirect_to '/', notice: "User was successfully destroyed."
+    redirect_to root_url, notice: "User was successfully destroyed."
   end
 
   private
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       begin
         @user = User.find(params[:id])
       rescue
-        redirect_to '/404'
+        redirect_to not_found_url
       end
     end
 

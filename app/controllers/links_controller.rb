@@ -58,7 +58,7 @@ include LinksHelper
   def slug
     @link = Link.find_by(slug: params[:slug])
     unless @link
-      redirect_to '/404'
+      redirect_to not_found_url
     else
       case @link.type
       when 'Regular'
@@ -69,7 +69,7 @@ include LinksHelper
         if @link.expires_at > DateTime.now
           redirect 
         else
-          redirect_to '/404'
+          redirect_to not_found_url
         end
       when 'Ephemeral'
         if @link.remaining_accesses > 0
@@ -77,7 +77,7 @@ include LinksHelper
           @link.save
           redirect 
         else      
-          redirect_to '/403'
+          redirect_to forbidden_url
         end
       end
     end
@@ -103,7 +103,7 @@ include LinksHelper
       begin
         @link = Link.find(params[:id])
       rescue
-        redirect_to '/404'
+        redirect_to not_found_url
       end
     end
 

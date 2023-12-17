@@ -15,6 +15,4 @@ class StatisticsController < ApplicationController
         @link_name = link.name
         @statistics = Statistic.where(link_id: params[:id]).group_by_day(:date).count.filter {|day,amount| amount>0}
     end
-
-
 end

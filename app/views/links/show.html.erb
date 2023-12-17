@@ -66,5 +66,5 @@
     </ul>
   </div>
   
-  <%= button_to "Destroy this link",'/links/'+@link.id.to_s, method: :delete, :class=>"btn btn-light"%>
+  <%= button_to "Destroy this link",link_path(@link), method: :delete, :class=>"btn btn-light"%>
 </div>

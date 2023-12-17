@@ -8,14 +8,14 @@ Rails.application.routes.draw do
   get "logout" => "sessions#destroy", as: "logout"
 
   get "l/:slug" => "links#slug", as: "public_link"
-  post "l/:slug" => "links#post_slug", as: "slugPass"
+  post "l/:slug" => "links#post_slug", as: "slug_pass"
 
   get "links/:id/statistics/detail" => "statistics#show_detail", as: "show_detail_stats"
   get "links/:id/statistics/day" => "statistics#show_day", as: "show_day_stats"
 
-  get '/404', to: 'errors#not_found'
-  get '/403', to: 'errors#forbidden'
-  get '/500', to: 'errors#internal_server_error'
+  get '/404', to: 'errors#not_found', as: 'not_found'
+  get '/403', to: 'errors#forbidden', as: 'forbidden'
+  get '/500', to: 'errors#internal_server_error', as: 'internal_server'
 
   match '*unmatched', to: 'errors#not_found', via: :all
 

@@ -1,4 +1,4 @@
-<%= form_with(model: link, url: '/links') do |form| %>
+<%= form_with(model: link, url: links_path) do |form| %>
   <% if @link.errors.any? %>
     <div class="alert alert-danger" role="alert">
       <div >
