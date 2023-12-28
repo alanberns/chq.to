@@ -72,7 +72,7 @@ include LinksHelper
           redirect_to not_found_url
         end
       when 'Ephemeral'
-        if @link.remaining_accesses > 0
+        if @link.remaining_accesses?
           @link.decrement!(:remaining_accesses)
           @link.save
           redirect 

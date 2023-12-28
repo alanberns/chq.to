@@ -1,5 +1,5 @@
 class Link < ApplicationRecord
-    before_validation :create_slug
+    before_validation :create_slug, on: :create
     has_many :statistics, dependent: :delete_all
     belongs_to :user
     validates :user, presence: true
