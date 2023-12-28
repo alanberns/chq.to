@@ -23,7 +23,10 @@ usuarios de prueba:
 * username: testdos
 * username: testvacio
 
-* passwords: asdfg (para todos los usuarios y links privados)
+* passwords: 
+- asdfg (para todos los usuarios)
+- asdfg123! (para todos los links privados)
+
 
 
 ### Gemas 
