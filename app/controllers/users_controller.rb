@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 
   def destroy
+    protect_unauthorized(@user.id)
     @user.destroy!
     redirect_to root_url, notice: "User was successfully destroyed."
   end

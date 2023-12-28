@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
             redirect_to login_url, alert: 'Inicia sesión' unless Current.user
         end
 
-        def protect_unauthorized(link_user_id)
+        def protect_unauthorized(user_id)
             # Raise unauthorized
-            redirect_to forbidden_url unless Current.user.id == link_user_id
+            redirect_to forbidden_url unless Current.user.id == user_id
         end
 end
