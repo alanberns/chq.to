@@ -1,4 +1,5 @@
 class StatisticsController < ApplicationController
+    before_action :protect_pages
     def show_detail
         link = Link.find(params[:id])
         protect_unauthorized(link.user_id)

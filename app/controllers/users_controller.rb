@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ destroy ]
-  skip_before_action :protect_pages, only: [:new, :create]
+  before_action :protect_pages, except: [:new, :create]
 
   # GET /users/new
   def new

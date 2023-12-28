@@ -1,5 +1,4 @@
 class ErrorsController < ApplicationController
-    skip_before_action :protect_pages
     def not_found
         render status: :not_found, layout: false
     end

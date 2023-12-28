@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
 include LinksHelper
   before_action :set_link, only: %i[ show edit update destroy ]
-  skip_before_action :protect_pages, only: %i[ slug post_slug ]
+  before_action :protect_pages, except: %i[ slug post_slug ]
 
   # GET /links 
   def index
