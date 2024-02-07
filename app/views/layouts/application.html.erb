@@ -12,12 +12,16 @@
   </head>
 
   <body class="text-center" style="min-height: 90vh; background-color:#D2E8EA">
-    <%= render 'partials/header' %>
-    <div class="container">
-      <%= render 'partials/flash' %>
-      <%= yield %>
-    </div>
+    <div style="position: relative; min-height: 100vh;">
+      <%= render 'partials/header' %>
+      <div class="container">
+        <%= render 'partials/flash' %>
+        <%= yield %>
+      </div>
+      <br>
+      <br>
       <br>
       <%= render 'partials/footer' %>
+    </div>
   </body>
 </html>

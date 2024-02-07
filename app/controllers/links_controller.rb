@@ -5,7 +5,7 @@ include LinksHelper
 
   # GET /links 
   def index
-    @links = Link.where(user_id: Current.user.id).page(params[:page]).per(5)
+    @links = Link.where(user_id: Current.user.id).page(params[:page]).per()
   end
 
   # GET /links/1 
