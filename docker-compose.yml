@@ -1,0 +1,12 @@
+services:
+  # Servicio de Ruby on Rails
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rails_app
+    tty: true
+    volumes:
+      - .:/usr/var/app
+    ports:
+      - "3000:3000"

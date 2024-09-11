@@ -11,11 +11,12 @@ Los enlaces pueden editarse y eliminarse, y cuentan con estadísticas de acceso
 
 ### Instalación
 * git clone https://github.com/alanberns/chq.to.git
+* cd chq.to
 * bundle install
 * rails db:migrate
 * rails server
 
-###### Datos de prueba
+### Datos de prueba
 * rails db:seed
 
 usuarios de prueba:
@@ -28,6 +29,20 @@ usuarios de prueba:
 - asdfg123! (para todos los links privados)
 
 
+### Instalación con Docker-compose
+
+#### Requisitos técnicos
+* Docker
+
+#### Instalación
+
+* git clone https://github.com/alanberns/chq.to.git
+* cd chq.to
+* docker-compose up -d
+* docker-compose exec app rails db:migrate 
+
+###### Datos de prueba
+* docker-compose exec app rails db:seed
 
 ### Gemas 
 * bcrypt: Para encriptar y validar contraseñas
